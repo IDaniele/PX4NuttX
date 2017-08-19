@@ -545,6 +545,10 @@ static inline void rcc_enableapb2(void)
   regval |= RCC_APB2ENR_SPI1EN;
 #endif
 
+//DW1000
+#ifndef CONFIG_STM32_SPI4
+#define CONFIG_STM32_SPI4 1
+#endif
 #ifdef CONFIG_STM32_SPI4
   /* SPI4 clock enable */
 
