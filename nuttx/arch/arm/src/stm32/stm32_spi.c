@@ -82,6 +82,11 @@
 #include "stm32_dma.h"
 #include "stm32_spi.h"
 
+//DW1000
+#ifndef CONFIG_STM32_SPI4
+#define CONFIG_STM32_SPI4 1
+#endif
+
 #if defined(CONFIG_STM32_SPI1) || defined(CONFIG_STM32_SPI2) || defined(CONFIG_STM32_SPI3) || \
     defined(CONFIG_STM32_SPI4) || defined(CONFIG_STM32_SPI5) || defined(CONFIG_STM32_SPI6)
 
@@ -397,6 +402,10 @@ static struct stm32_spidev_s g_spi3dev =
 };
 #endif
 
+//DW1000
+#ifndef CONFIG_STM32_SPI4
+#define CONFIG_STM32_SPI4 1
+#endif
 #ifdef CONFIG_STM32_SPI4
 static const struct spi_ops_s g_sp4iops =
 {
@@ -1659,6 +1668,10 @@ FAR struct spi_dev_s *up_spiinitialize(int port)
         }
     }
   else
+#endif
+//DW1000
+#ifndef CONFIG_STM32_SPI4
+#define CONFIG_STM32_SPI4 1
 #endif
 #ifdef CONFIG_STM32_SPI4
   if (port == 4)
